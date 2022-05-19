@@ -1,6 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnifinanceTask", "MagnifinanceTask\MagnifinanceTask.csproj", "{FA4475ED-1341-4377-AEB1-EFA9B832D0C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnifinanceTask.API", "MagnifinanceTask.API\MagnifinanceTask.API.csproj", "{FA4475ED-1341-4377-AEB1-EFA9B832D0C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnifinanceTask.Application", "MagnifinanceTask.Application\MagnifinanceTask.Application.csproj", "{6851D962-4F81-496E-AF81-54FF0B1AB5AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnifinanceTask.Domain", "MagnifinanceTask.Domain\MagnifinanceTask.Domain.csproj", "{61DF4E05-025B-4E03-8BBE-5AF8BFF2DBE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnifinanceTask.Infrastructure", "MagnifinanceTask.Infrastructure\MagnifinanceTask.Infrastructure.csproj", "{2A352D72-13B0-472F-9D6D-6C9DBC5743EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnifinanceTask.IOC", "MagnifinanceTask.IOC\MagnifinanceTask.IOC.csproj", "{51C81116-6B5E-4018-BF92-7F61280CEA84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +20,21 @@ Global
 		{FA4475ED-1341-4377-AEB1-EFA9B832D0C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA4475ED-1341-4377-AEB1-EFA9B832D0C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA4475ED-1341-4377-AEB1-EFA9B832D0C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6851D962-4F81-496E-AF81-54FF0B1AB5AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6851D962-4F81-496E-AF81-54FF0B1AB5AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6851D962-4F81-496E-AF81-54FF0B1AB5AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6851D962-4F81-496E-AF81-54FF0B1AB5AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61DF4E05-025B-4E03-8BBE-5AF8BFF2DBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61DF4E05-025B-4E03-8BBE-5AF8BFF2DBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61DF4E05-025B-4E03-8BBE-5AF8BFF2DBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61DF4E05-025B-4E03-8BBE-5AF8BFF2DBE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A352D72-13B0-472F-9D6D-6C9DBC5743EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A352D72-13B0-472F-9D6D-6C9DBC5743EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A352D72-13B0-472F-9D6D-6C9DBC5743EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A352D72-13B0-472F-9D6D-6C9DBC5743EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C81116-6B5E-4018-BF92-7F61280CEA84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C81116-6B5E-4018-BF92-7F61280CEA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C81116-6B5E-4018-BF92-7F61280CEA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C81116-6B5E-4018-BF92-7F61280CEA84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

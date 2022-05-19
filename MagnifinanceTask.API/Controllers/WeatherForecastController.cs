@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MagnifinanceTask.Controllers;
+namespace MagnifinanceTask.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

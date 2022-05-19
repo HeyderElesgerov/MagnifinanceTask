@@ -1,4 +1,4 @@
-namespace MagnifinanceTask;
+namespace MagnifinanceTask.API;
 
 public class WeatherForecast
 {
