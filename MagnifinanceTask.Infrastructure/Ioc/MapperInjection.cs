@@ -7,7 +7,11 @@ public static class MapperInjection
 {
     public static IServiceCollection InjectAutoMapper(this IServiceCollection services)
     {
-        services.AddAutoMapper(ex => ex.AddProfile(typeof(CourseProfile)));
+        services.AddAutoMapper(ex =>
+        {
+            ex.AddProfile(typeof(CourseProfile));
+            ex.AddProfile(typeof(SubjectProfile));
+        });
         return services;
     }
 }
