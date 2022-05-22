@@ -11,6 +11,7 @@ public static class RepositoryInjection
     {
         services.AddScoped<IGenericRepository<Course, int>, GenericRepository<Course, int>>();
         services.AddScoped<IGenericRepository<Subject, int>, GenericRepository<Subject, int>>();
+        services.AddScoped<IGenericRepository<Teacher, int>, GenericRepository<Teacher, int>>();
         return services;
     }
 }

@@ -11,6 +11,7 @@ public static class MapperInjection
         {
             ex.AddProfile(typeof(CourseProfile));
             ex.AddProfile(typeof(SubjectProfile));
+            ex.AddProfile(typeof(TeacherProfile));
         });
         return services;
     }
