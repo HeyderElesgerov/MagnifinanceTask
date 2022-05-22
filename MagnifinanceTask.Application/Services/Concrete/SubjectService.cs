@@ -1,3 +1,5 @@
+using System.ComponentModel.Design;
+using System.Net.Security;
 using AutoMapper;
 using MagnifinanceTask.Application.Dtos.Subject;
 using MagnifinanceTask.Application.Services.Abstract;
@@ -10,18 +12,22 @@ namespace MagnifinanceTask.Application.Services.Concrete;
 public class SubjectService : ISubjectService
 {
     private IGenericRepository<Subject, int> _subjectRepository;
+    private ICourseService _courseService;
     private ILogger _logger;
     private IMapper _mapper;
 
-    public SubjectService(IGenericRepository<Subject, int> subjectRepository, ILogger logger, IMapper mapper)
+    public SubjectService(IGenericRepository<Subject, int> subjectRepository, ILogger logger, IMapper mapper, ICourseService courseService)
     {
         _subjectRepository = subjectRepository;
         _logger = logger;
         _mapper = mapper;
+        _courseService = courseService;
     }
 
     public void AddNewSubject(AddSubjectDto dto)
     {
+        if (_courseService.GetById(dto.CourseId) == null)
+            throw new Exception("Course not found");
         try
         {
             _subjectRepository.Add(_mapper.Map<Subject>(dto));
@@ -35,12 +41,18 @@ public class SubjectService : ISubjectService
 
     public void UpdateSubject(UpdateSubjectDto dto)
     {
-        if (!_subjectRepository.Exists(dto.Id))
+        var subject = _subjectRepository.GetById(dto.Id);
+        if (subject == null)
             throw new Exception("Subject not found");
 
+        if (_courseService.GetById(dto.CourseId) == null)
+            throw new Exception("Course not found");
+        
         try
         {
-            _subjectRepository.Update(_mapper.Map<Subject>(dto));
+            subject.CourseId = dto.CourseId;
+            subject.Name = dto.Name;
+            _subjectRepository.Update(subject);
         }
         catch (Exception ex)
         {
