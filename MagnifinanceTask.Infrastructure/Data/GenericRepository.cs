@@ -8,7 +8,7 @@ namespace MagnifinanceTask.Infrastructure.Data;
 
 public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : Entity<TKey> 
 {
-    private readonly TaskDbContext _context;
+    protected readonly TaskDbContext _context;
 
     public GenericRepository(TaskDbContext context)
     {

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MagnifinanceTask.Application.Dtos.Grade;
 
-public class UpdateGrade
+public class UpdateGradeDto
 {
     public int Id { get; set; }
 

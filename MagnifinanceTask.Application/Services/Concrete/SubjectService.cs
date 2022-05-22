@@ -1,5 +1,3 @@
-using System.ComponentModel.Design;
-using System.Net.Security;
 using AutoMapper;
 using MagnifinanceTask.Application.Dtos.Subject;
 using MagnifinanceTask.Application.Services.Abstract;
@@ -11,12 +9,12 @@ namespace MagnifinanceTask.Application.Services.Concrete;
 
 public class SubjectService : ISubjectService
 {
-    private IGenericRepository<Subject, int> _subjectRepository;
+    private ISubjectRepository _subjectRepository;
     private ICourseService _courseService;
     private ILogger _logger;
     private IMapper _mapper;
 
-    public SubjectService(IGenericRepository<Subject, int> subjectRepository, ILogger logger, IMapper mapper, ICourseService courseService)
+    public SubjectService(ISubjectRepository subjectRepository, ILogger logger, IMapper mapper, ICourseService courseService)
     {
         _subjectRepository = subjectRepository;
         _logger = logger;
@@ -85,5 +83,11 @@ public class SubjectService : ISubjectService
     public Subject GetById(int id)
     {
         return _subjectRepository.GetById(id);
+    }
+
+    public IEnumerable<SubjectInfoDto> ListSubjects()
+    {
+        var subjects = _subjectRepository.GetAllIncludingForList();
+        return _mapper.Map<IEnumerable<SubjectInfoDto>>(subjects);
     }
 }

@@ -1,4 +1,4 @@
-using MagnifinanceTask.Application.Dtos.Subject;
+using MagnifinanceTask.Application.Dtos.Grade;
 using MagnifinanceTask.Application.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,36 +6,36 @@ namespace MagnifinanceTask.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class SubjectsController : ControllerBase
+public class GradesController : ControllerBase
 {
-    private readonly ISubjectService _subjectService;
+    private readonly IGradeService _gradeService;
 
-    public SubjectsController(ISubjectService subjectService)
+    public GradesController(IGradeService gradeService)
     {
-        _subjectService = subjectService;
+        _gradeService = gradeService;
     }
 
     [HttpGet]
     public IActionResult GetAll()
     {
-        return Ok(_subjectService.GetAllSubjects());
+        return Ok(_gradeService.GetAllGrades());
     }
 
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var subject = _subjectService.GetById(id);
-        if (subject == null)
+        var grade = _gradeService.GetById(id);
+        if (grade == null)
             return NotFound();
-        return Ok(subject);
+        return Ok(grade);
     }
 
     [HttpPost]
-    public IActionResult AddNew(AddSubjectDto dto)
+    public IActionResult AddNew(AddGradeDto dto)
     {
         try
         {
-            _subjectService.AddNewSubject(dto);
+            _gradeService.AddNewGrade(dto);
             return Ok();
         }
         catch (Exception ex)
@@ -45,11 +45,11 @@ public class SubjectsController : ControllerBase
     }
 
     [HttpPut]
-    public IActionResult Update(UpdateSubjectDto dto)
+    public IActionResult Update(UpdateGradeDto dto)
     {
         try
         {
-            _subjectService.UpdateSubject(dto);
+            _gradeService.UpdateGrade(dto);
             return Ok();
         }
         catch (Exception ex)
@@ -63,18 +63,12 @@ public class SubjectsController : ControllerBase
     {
         try
         {
-            _subjectService.DeleteSubject(id);
+            _gradeService.DeleteGrade(id);
             return Ok();
         }
         catch (Exception ex)
         {
             return BadRequest(ex.Message);
         }
-    }
-
-    [HttpGet("list")]
-    public IActionResult List()
-    {
-        return Ok(_subjectService.ListSubjects());
     }
 }

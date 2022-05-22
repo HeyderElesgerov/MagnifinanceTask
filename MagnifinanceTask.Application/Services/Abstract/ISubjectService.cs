@@ -14,4 +14,5 @@ public interface ISubjectService
     IEnumerable<Subject> GetAllSubjects();
 
     Subject GetById(int id);
+    IEnumerable<SubjectInfoDto> ListSubjects();
 }

@@ -13,6 +13,7 @@ public static class MapperInjection
             ex.AddProfile(typeof(SubjectProfile));
             ex.AddProfile(typeof(TeacherProfile));
             ex.AddProfile(typeof(StudentProfile));
+            ex.AddProfile(typeof(GradeProfile));
         });
         return services;
     }
