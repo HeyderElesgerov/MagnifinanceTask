@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MagnifinanceTask.IOC\MagnifinanceTask.IOC.csproj" />
+      <ProjectReference Include="..\MagnifinanceTask.Infrastructure\MagnifinanceTask.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

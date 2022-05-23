@@ -1,4 +1,3 @@
-using AutoMapper;
 using MagnifinanceTask.Application.Dtos.Course;
 using MagnifinanceTask.Application.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
