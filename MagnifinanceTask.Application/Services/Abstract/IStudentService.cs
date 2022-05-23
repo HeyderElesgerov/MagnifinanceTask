@@ -11,4 +11,5 @@ public interface IStudentService
     IEnumerable<Student> GetAllStudents();
     Student GetById(int id);
     IEnumerable<StudentInfoDto> List();
+    void Enroll(EnrollCourseDto dto);
 }

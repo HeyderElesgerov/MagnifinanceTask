@@ -10,14 +10,16 @@ namespace MagnifinanceTask.Application.Services.Concrete;
 public class StudentService : IStudentService
 {
     private readonly IGenericRepository<Student, int> _studentRepository;
+    private readonly IGenericRepository<Course, int> _courseRepository;
     private readonly IMapper _mapper;
     private ILogger _logger;
 
-    public StudentService(IGenericRepository<Student, int> studentRepository, IMapper mapper, ILogger logger)
+    public StudentService(IGenericRepository<Student, int> studentRepository, IMapper mapper, ILogger logger, IGenericRepository<Course, int> courseRepository)
     {
         _studentRepository = studentRepository;
         _mapper = mapper;
         _logger = logger;
+        _courseRepository = courseRepository;
     }
 
     public void AddNewStudent(AddStudentDto dto)
@@ -81,5 +83,35 @@ public class StudentService : IStudentService
     {
         var students = _studentRepository.GetAllIncluding("Grades.Subject");
         return _mapper.Map<IEnumerable<StudentInfoDto>>(students);
+    }
+
+    public void Enroll(EnrollCourseDto dto)
+    {
+        var student = _studentRepository.GetByIdIncluding(dto.StudentId, s => s.Courses);
+        if (student == null)
+            throw new Exception("Student not found");
+
+        List<Course> courses = new List<Course>();
+        
+        //add existing courses
+        foreach (int courseId in dto.CourseIds)
+        {
+            var enrolledCourse = student.Courses.FirstOrDefault(c => c.Id == courseId);
+            if (enrolledCourse != null)
+                courses.Add(enrolledCourse);
+            else
+                courses.Add(_courseRepository.GetById(courseId));
+        }
+        
+        student.Courses = courses;
+        try
+        {
+            _studentRepository.Update(student);
+        }
+        catch (Exception ex)
+        {
+            _logger.Error(ex.Message + " " + ex.StackTrace);
+            throw new Exception("Something went wrong");
+        }
     }
 }

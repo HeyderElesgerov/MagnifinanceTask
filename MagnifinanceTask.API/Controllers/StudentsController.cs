@@ -77,4 +77,18 @@ public class StudentsController : ControllerBase
     {
         return Ok(_studentService.List());
     }
+
+    [HttpPost("enroll")]
+    public IActionResult Enroll(EnrollCourseDto dto)
+    {
+        try
+        {
+            _studentService.Enroll(dto);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }
