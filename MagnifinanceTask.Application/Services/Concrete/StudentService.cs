@@ -76,4 +76,10 @@ public class StudentService : IStudentService
     {
         return _studentRepository.GetById(id);
     }
+
+    public IEnumerable<StudentInfoDto> List()
+    {
+        var students = _studentRepository.GetAllIncluding("Grades.Subject");
+        return _mapper.Map<IEnumerable<StudentInfoDto>>(students);
+    }
 }

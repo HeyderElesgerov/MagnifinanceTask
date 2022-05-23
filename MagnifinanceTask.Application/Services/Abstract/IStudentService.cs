@@ -10,4 +10,5 @@ public interface IStudentService
     void DeleteStudent(int id);
     IEnumerable<Student> GetAllStudents();
     Student GetById(int id);
+    IEnumerable<StudentInfoDto> List();
 }

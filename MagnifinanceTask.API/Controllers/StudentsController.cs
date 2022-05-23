@@ -71,4 +71,10 @@ public class StudentsController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpGet("list")]
+    public IActionResult List()
+    {
+        return Ok(_studentService.List());
+    }
 }
